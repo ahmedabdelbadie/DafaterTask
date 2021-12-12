@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CompanyDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CompanyD.dbo.employee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="hired" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varbinary" MaxLength="50" />
+          <Property Name="family_name" Type="varbinary" MaxLength="50" />
+          <Property Name="address" Type="varbinary" MaxLength="50" />
+          <Property Name="country_of_origin" Type="varbinary" MaxLength="50" />
+          <Property Name="email" Type="varbinary" MaxLength="50" />
+          <Property Name="age" Type="int" />
+          <Property Name="hired" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="CompanyDModelStoreContainer">
+          <EntitySet Name="employee" EntityType="Self.employee" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [employee].[id] AS [id], 
+    [employee].[name] AS [name], 
+    [employee].[family_name] AS [family_name], 
+    [employee].[address] AS [address], 
+    [employee].[country_of_origin] AS [country_of_origin], 
+    [employee].[email] AS [email], 
+    [employee].[age] AS [age], 
+    [employee].[hired] AS [hired]
+    FROM [dbo].[employee] AS [employee]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CompanyDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="hired" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="Binary" MaxLength="50" FixedLength="false" />
+          <Property Name="family_name" Type="Binary" MaxLength="50" FixedLength="false" />
+          <Property Name="address" Type="Binary" MaxLength="50" FixedLength="false" />
+          <Property Name="country_of_origin" Type="Binary" MaxLength="50" FixedLength="false" />
+          <Property Name="email" Type="Binary" MaxLength="50" FixedLength="false" />
+          <Property Name="age" Type="Int32" />
+          <Property Name="hired" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="CompanyDEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="employees" EntityType="Self.employee" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CompanyDModelStoreContainer" CdmEntityContainer="CompanyDEntities">
+          <EntitySetMapping Name="employees">
+            <EntityTypeMapping TypeName="CompanyDModel.employee">
+              <MappingFragment StoreEntitySet="employee">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="family_name" ColumnName="family_name" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="country_of_origin" ColumnName="country_of_origin" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="hired" ColumnName="hired" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
